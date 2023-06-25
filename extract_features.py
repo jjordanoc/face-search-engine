@@ -21,7 +21,7 @@ The output will be given in the following format in a file called out.embeds:
 def main():
     outfile = open("out.embeds", mode="wb")
     output: List[Tuple[str, np.ndarray]] = list()
-    path = os.path.join(os.getcwd(), "lfw")
+    path = os.path.join(os.getcwd(), "fotos_test")
     for subdir, dirs, files in os.walk(path):
         for file in files:
             face_file = os.path.join(subdir, file)
@@ -31,3 +31,7 @@ def main():
                 output.append((face_file, face_embedding))
     pickle.dump(output, outfile)
     outfile.close()
+
+
+if __name__ == "__main__":
+    main()
