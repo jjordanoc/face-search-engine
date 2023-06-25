@@ -31,3 +31,7 @@ def main():
                 output.append((face_file, face_embedding))
     pickle.dump(output, outfile)
     outfile.close()
+
+
+if __name__ == '__main__':
+    main()
