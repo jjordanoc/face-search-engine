@@ -4,6 +4,8 @@ from typing import Tuple, List
 import pickle
 import face_recognition
 
+PATH_TO_IMAGES = os.path.join(os.getcwd(), "lfw")
+
 """
 Compute the embeddings for all images in the dataset.
 When an image has more than 1 face, two entries are created
