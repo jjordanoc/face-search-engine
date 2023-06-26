@@ -7,6 +7,7 @@ from helpers import measure_execution_time
 
 
 class RTreeQueryManager:
+    @measure_execution_time
     def __init__(self, m: int, collection: List[Tuple[str, np.ndarray]]) -> None:
         p = index.Property()
         p.dimension = 128  # D
@@ -34,5 +35,4 @@ class RTreeQueryManager:
 if __name__ == "__main__":
     with open("out.embeds", mode="rb") as collection_file:
         collection = pickle.load(collection_file)
-    rtree_query_manager = RTreeQueryManager(collection=collection, m=5)
-    print(rtree_query_manager.knn_query(q="fotos_test/Martin Vizcarra/foto4.jpg", k=2))
+
