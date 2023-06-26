@@ -3,18 +3,20 @@ from typing import Tuple, List
 from rtree import index
 import face_recognition
 import numpy as np
+from helpers import measure_execution_time
 
 
-class KNNRTreeQueryManager:
-    def __init__(self, m: int, collection_: List[Tuple[str, np.ndarray]]) -> None:
+class RTreeQueryManager:
+    def __init__(self, m: int, collection: List[Tuple[str, np.ndarray]]) -> None:
         p = index.Property()
         p.dimension = 128  # D
         p.buffering_capacity = m  # M
-        self.collection_ = collection_
+        self.collection_ = collection
         self.idx = index.Index(properties=p)
-        for i in range(len(collection_)):
-            self.idx.insert(id=i, coordinates=collection_[i][1])
+        for i in range(len(collection)):
+            self.idx.insert(id=i, coordinates=collection[i][1])
 
+    @measure_execution_time
     def knn_query(self, q: str, k: int) -> List[List[Tuple[str, float]]]:
         image_query = face_recognition.load_image_file(q)
         query_embeds = face_recognition.face_encodings(image_query)
@@ -32,5 +34,5 @@ class KNNRTreeQueryManager:
 if __name__ == "__main__":
     with open("out.embeds", mode="rb") as collection_file:
         collection = pickle.load(collection_file)
-    rtree_query_manager = KNNRTreeQueryManager(collection_=collection, m=5)
+    rtree_query_manager = RTreeQueryManager(collection=collection, m=5)
     print(rtree_query_manager.knn_query(q="fotos_test/Martin Vizcarra/foto4.jpg", k=2))

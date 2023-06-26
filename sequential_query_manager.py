@@ -1,16 +1,18 @@
 import numpy as np
 from typing import Tuple, List
 import face_recognition
+from helpers import measure_execution_time
 
-from Heap import MaxHeap
+from heap import MaxHeap
 
 
-class KNNSequentialQueryManager:
+class SequentialQueryManager:
 
     def __init__(self, collection: List[Tuple[str, np.ndarray]]) -> None:
         self.collection = collection
 
-    def range_search(self, q: str, r: float) -> List[List[Tuple[str, float]]]:
+    @measure_execution_time
+    def range_query(self, q: str, r: float) -> List[List[Tuple[str, float]]]:
         # process face of query path file
         image = face_recognition.load_image_file(q)
         query = face_recognition.face_encodings(image)
@@ -28,7 +30,8 @@ class KNNSequentialQueryManager:
 
         return result
 
-    def linear_search(self, q: str, k: int) -> List[List[Tuple[str, float]]]:
+    @measure_execution_time
+    def knn_query(self, q: str, k: int) -> List[List[Tuple[str, float]]]:
         class DistWrapper:
             def __init__(self, d: float, embed: np.ndarray, file_name: str):
                 self.dist = d
