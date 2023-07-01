@@ -12,12 +12,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.post('/procesar_imagen')
 async def procesamiento(image: UploadFile = File(...)):
     image.filename = "imagen.jpg"
     contents = await image.read()
 
-    with open(f"./img/{image.filename}","wb") as f:
+    with open(f"./img/{image.filename}", "wb") as f:
         f.write(contents)
 
     return {"message": "mensaje recibido"}
