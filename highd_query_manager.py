@@ -6,12 +6,12 @@ import faiss
 
 
 class HighDQueryManager:
-    def __init__(self, m: int, collection: List[Tuple[str, np.ndarray]]) -> None:
+    def __init__(self, num_bits: int, collection: List[Tuple[str, np.ndarray]]) -> None:
         self.collection = collection
 
         d = 128
-        self.index = faiss.IndexLSH(d, m)
-        self.index.add(np.ascontiguousarray(np.asarray([i[0] for i in collection], "float32")))
+        self.index = faiss.IndexLSH(d, num_bits)
+        self.index.add(np.ascontiguousarray(np.asarray([i[1] for i in self.collection], "float32")))
 
     @measure_execution_time
     def knn_query(self, q: str, k: int) -> List[List[Tuple[str, float]]]:
@@ -29,7 +29,8 @@ class HighDQueryManager:
 
             for idx in face_id:
                 obj = self.collection[idx]
-                partial_result.append((obj[0], ranking_iter[0]))
+                rank = ranking_iter[0]
+                partial_result.append((obj[0], float(rank)))
 
                 ranking_iter.iternext()
 
