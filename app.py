@@ -33,6 +33,24 @@ temporary_query_path2 = "query2.jpg"
 temporary_query_path3 = "query3.jpg"
 
 
+@app.post('/sequential_range')
+async def get_knn_sequential(file: UploadFile = File(...), r: str = Form(...)) -> dict:
+    r = float(r)
+    data = await file.read()
+
+    with open(temporary_query_path1, 'wb') as f:
+        f.write(data)
+
+    result = sequential_query_manager.range_query(q=temporary_query_path1, r=r)
+    os.remove(temporary_query_path1)
+
+    print(result)
+    return {
+        'result': result,
+        'response': 200
+        }
+
+
 @app.post('/sequential')
 async def get_knn_sequential(file: UploadFile = File(...), k: str = Form(...)) -> dict:
     k = int(k)
