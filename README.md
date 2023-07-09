@@ -6,7 +6,7 @@
 |:-----------------------------------:|:---------:|
 |  José Rafael Chachi Rodriguez       |  Backend  |
 |    Joaquín Francisco Jordán O'Connor|  Backend  |
-|     Juan Diego Castro Padilla       |  Backend  |
+|     Juan Diego Castro Padilla       |  Backend / Frontend  |
 |   Juan Diego Lareda Yarma           | Frontend  |
 
 ## Video explicativo
@@ -41,7 +41,7 @@ El archivo zip contiene lo siguiente:
 ```
 Es una carpeta lleno con carpetas con los nombres de los rostros principales. Adicionalmente, dentro de cada carpeta existen entre 1 a más imágenes de rostro referentes al nombre de la carpeta.
 
-Dataset extraído de ![Face Database](http://vis-www.cs.umass.edu/lfw/).
+Dataset extraído de [Face Data](http://vis-www.cs.umass.edu/lfw/).
 
 ## Librerías utilizadas
 
@@ -58,9 +58,13 @@ Para realizar las operaciones con archivos multimedia, nos apoyamos de las sigui
 - El RTree genera espacios de acceso multidimensional en donde almacena elementos semejantes a estos.
 - En la búsqueda, se aplica un filtrado con respecto a estos espacios en las dimensiones del árbol.
 
-### Faiss
+### Faiss (LSH)
+- Algoritmo de búsqueda de los vectores característicos más semejantes.
+- Utiliza una familia de funciones hash. Intenta provocar colisiones en un mismo bucket.
+- Almacena buckets no vacíos. Esto para hacer la búsqueda de los vectores en una complejidad menor a la lineal.
 
 ## Análisis de la maldición de la dimensionalidad y mitigación
+
 
 
 ## Back-End
@@ -85,9 +89,6 @@ Se utilizó el framework **FastAPI**, con el cual conectamos con el front-end a 
 ```
 
 - 333.
-
-
-
 
 
 
