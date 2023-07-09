@@ -29,9 +29,10 @@ Aplicar los algoritmos de búsqueda y recuperación de la información para arch
 El dataset utilizado son rostros de personas famosas de cualquier profesión. Nótese que una imagen no necesariamente contiene el rostro de solo 1 persona.
 El archivo zip contiene lo siguiente:
 
-```json
+```markdown
 |--- Aaron_Eckhart
 |    |--- Aaron_Eckhart_0001.jpg
+|
 |--- Aaron_Guiel
 |    |--- Aaron_Guiel_0001.jpg
 ...
@@ -43,6 +44,21 @@ Es una carpeta lleno con carpetas con los nombres de los rostros principales. Ad
 Dataset extraído de ![Face Database](http://vis-www.cs.umass.edu/lfw/).
 
 ## Librerías utilizadas
+
+Una de nuestras principales librerías a utilizar es el **Face recognition**. Sin esta librería no se puede extraer el vector característico de una imagen con rostros.
+Para realizar las operaciones con archivos multimedia, nos apoyamos de las siguientes librerías para realizar la búsqueda KNN.
+
+### Heapq
+- Estructura unidimensional.
+- Los nodos del heap son las K imágenes más cercanas a la query.
+- Se apoya de un heap para optimizar espacialmente la búsqueda secuencial KNN.
+
+### RTree
+- Estructura multidimensional.
+- El RTree genera espacios de acceso multidimensional en donde almacena elementos semejantes a estos.
+- En la búsqueda, se aplica un filtrado con respecto a estos espacios en las dimensiones del árbol.
+
+### Faiss
 
 ## Análisis de la maldición de la dimensionalidad y mitigación
 
