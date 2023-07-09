@@ -65,7 +65,11 @@ Para realizar las operaciones con archivos multimedia, nos apoyamos de las sigui
 
 ## Análisis de la maldición de la dimensionalidad y mitigación
 
+El árbol-R es una estructura dimensional que agrupa sus elementos en distintos locaciones geográficas. Estas locaciones son fijadas de acuerdo a la dimensión indicada en el árbol. Es por ello que es recomendable
+aumentar la cantidad de dimensiones del árbol-R para tener los elementos similares agrupados disjuntos. Sin embargo, existe una situación en que si la dimensión es un número demasiado grande, existen variadas locaciones en donde los elementos se agrupan. Si los elementos agrupados están dispersos, en el algoritmo de búsqueda de los elementos KNN no se aplicará un filtro prudente y esto ocasiona que nuestra búsqueda KNN en un
+árbol-R sea similar en complejidad computacional a una búsqueda lineal. En otras palabras, hay que ir aumentando la dimensión del RTree para agilizar la búsqueda hasta un tamaño en donde la dimensión no sea excesiva y sea perjudicial.
 
+Con esta limitación del árbol-R, es difícil decidir una dimensión apropiada, puesto que no hay un parámetro establecido que lo establezco más que ensayo y error. Como solución, se han implementado otros algoritmos o técnicas para evitar tener algun problema con la selección de la dimensión. En este proyecto se abordó el Faiss, un algoritmo que hace la búsqueda de vectores característicos semejantes en un tiempo menor al lineal.
 
 ## Back-End
 
@@ -73,10 +77,11 @@ Se utilizó el framework **FastAPI**, con el cual conectamos con el front-end a 
 
 
 ### Endpoints
+
 ```python
 #1
 ```
-- 111.
+- 111
 
 ```python
 #2
@@ -88,7 +93,7 @@ Se utilizó el framework **FastAPI**, con el cual conectamos con el front-end a 
 #3
 ```
 
-- 333.
+- 333
 
 
 
@@ -115,13 +120,15 @@ Comparacion de tiempos al recuperar documentos
 
 ## Experimentación
 
+No hay front
 
 ### Gráficos de resultado
 
+Excel noma
 
 ## Conclusiones
 
-- a
+- La búsqueda secuencial puede resultar sencilla de implementar. Sin embargo, existen otras librerías como la de Faiss que resulta aún más sencilla de implementar y en la experimentación resulta más óptimo.
 - b
 - c
 
