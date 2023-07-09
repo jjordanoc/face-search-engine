@@ -8,6 +8,7 @@ from heap import MaxHeap
 
 class SequentialQueryManager:
 
+    @measure_execution_time
     def __init__(self, collection: List[Tuple[str, np.ndarray]]) -> None:
         self.collection = collection
 
@@ -47,6 +48,9 @@ class SequentialQueryManager:
             def __eq__(self, other):
                 return self.dist == other.dist
 
+            def __repr__(self) -> str:
+                return str((self.file_name, self.dist))
+
         # process face of query path file
         image = face_recognition.load_image_file(q)
         query = face_recognition.face_encodings(image)
@@ -54,20 +58,13 @@ class SequentialQueryManager:
         result: List[List[Tuple[str, float]]] = []
 
         for face_embed in query:
-            result_tmp = MaxHeap[DistWrapper]()
+            result_heap = MaxHeap[DistWrapper]()
             for c in self.collection:
                 dist: float = np.linalg.norm(c[1] - face_embed)
-                if result_tmp.size() < k:
-                    result_tmp.push(DistWrapper(d=dist, embed=c[1], file_name=c[0]))
-                elif result_tmp.top().dist > dist:
-                    result_tmp.pop()
-                    result_tmp.push(DistWrapper(d=dist, embed=c[1], file_name=c[0]))
-            result_tmp2: List[Tuple[str, float]] = []
-
-            while result_tmp.size() != 0:
-                result_tmp2.append((result_tmp.top().file_name, result_tmp.top().dist))
-                result_tmp.pop()
-            result_tmp2 = sorted(result_tmp2, key=lambda x: x[1], reverse=False)
-            result.append(result_tmp2)
-
+                if result_heap.size() < k:
+                    result_heap.push(DistWrapper(d=dist, embed=c[1], file_name=c[0]))
+                elif result_heap.top().dist > dist:
+                    result_heap.pop()
+                    result_heap.push(DistWrapper(d=dist, embed=c[1], file_name=c[0]))
+            result.append([(wrapper.file_name, wrapper.dist) for wrapper in result_heap.heapsort()])
         return result

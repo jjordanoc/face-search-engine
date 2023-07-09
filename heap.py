@@ -16,6 +16,9 @@ class MaxHeapWrapper(Generic[T]):
     def __eq__(self, other) -> bool:
         return self.val == other.val
 
+    def __repr__(self) -> str:
+        return str(self.val)
+
 
 class MaxHeap(Generic[T]):
 
@@ -38,5 +41,11 @@ class MaxHeap(Generic[T]):
     def size(self) -> int:
         return len(self.heap)
 
-    def top(self):
+    def top(self) -> T:
         return self.heap[0].val
+
+    def heapsort(self) -> List[T]:
+
+        result = [self.pop() for i in range(len(self.heap))]
+        result.reverse()
+        return result
