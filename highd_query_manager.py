@@ -6,6 +6,7 @@ import faiss
 
 
 class HighDQueryManager:
+    @measure_execution_time
     def __init__(self, num_bits: int, collection: List[Tuple[str, np.ndarray]]) -> None:
         self.collection = collection
 
