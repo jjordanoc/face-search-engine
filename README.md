@@ -133,9 +133,11 @@ Comparacion de tiempos al recuperar documentos
 | 6400  | 0.681 | 0.643 | 0.607 |
 | 12800 | 0.745 | 0.734 | 0.629 |
 
-### Gráficos de resultado
 ![image](https://github.com/ByJuanDiego/db2-project-3/assets/83974213/65770a6e-0a63-471b-9884-8912905d038c)
 
+### Análisis y discusión
+
+Se puede observar que la búsqueda secuencial siempre tarda más que utilizar alguna de las técnicas de indexación propuestas. Asimismo, se observa que a partir de 6400 datos en adelante, el índice de alta dimensionalidad supera al RTree, lo cuál es una manifestación de la maldición de la dimensionalidad.
 
 ## Conclusiones
 
