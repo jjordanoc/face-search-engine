@@ -6,8 +6,8 @@
 |:-----------------------------------:|:---------:|
 |  José Rafael Chachi Rodriguez       |  Backend  |
 |    Joaquín Francisco Jordán O'Connor|  Backend  |
-|     Juan Diego Castro Padilla       |  Backend / Frontend  |
-|   Juan Diego Lareda Yarma           | Frontend  |
+|     Juan Diego Castro Padilla       |  Backend |
+|   Juan Diego Laredo Yarma           | Frontend  |
 
 ## Introducción 
 En este proyecto se nos ha pedido dar soporte a las búsquedas y recuperación eficientemente de datos multimedia, imágenes. Se utilizarán distintos algoritmos, además se apoyará de estructuras multidimensionales.
