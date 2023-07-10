@@ -120,11 +120,22 @@ Comparacion de tiempos al recuperar documentos
 
 ## Experimentación
 
-No hay front
+### Resultados
+
+| N     | Seq   | Rtree | HighD |
+| ----- | ----- | ----- | ----- |
+| 100   | 0.734 | 0.637 | 0.597 |
+| 200   | 0.807 | 0.651 | 0.698 |
+| 400   | 0.656 | 0.660 | 0.666 |
+| 800   | 0.689 | 0.697 | 0.693 |
+| 1600  | 0.764 | 0.682 | 0.629 |
+| 3200  | 0.726 | 0.632 | 0.666 |
+| 6400  | 0.681 | 0.643 | 0.607 |
+| 12800 | 0.745 | 0.734 | 0.629 |
 
 ### Gráficos de resultado
+![image](https://github.com/ByJuanDiego/db2-project-3/assets/83974213/65770a6e-0a63-471b-9884-8912905d038c)
 
-Excel noma
 
 ## Conclusiones
 
