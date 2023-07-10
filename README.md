@@ -9,11 +9,6 @@
 |     Juan Diego Castro Padilla       |  Backend / Frontend  |
 |   Juan Diego Lareda Yarma           | Frontend  |
 
-## Video explicativo
-
-Link del video:
-[https://drive.google.com/file/d/1crUT1CHy8CX1tj3TdSDlCxwQIOi75kNb/view?usp=sharing](https://www.youtube.com/watch?v=QB7ACr7pUuE)
-
 ## Introducción 
 En este proyecto se nos ha pedido dar soporte a las búsquedas y recuperación eficientemente de datos multimedia, imágenes. Se utilizarán distintos algoritmos, además se apoyará de estructuras multidimensionales.
 
@@ -21,7 +16,7 @@ En este proyecto se nos ha pedido dar soporte a las búsquedas y recuperación e
 ### Principal
 Aplicar los algoritmos de búsqueda y recuperación de la información para archivos multimedia aprendidos en clase.
 ### Secundarios
-- Definir una forma de como se almacenará los datos de las imágenes en memoria secundaria.
+- Utilizar métodos de indexación para hacer las búsquedas multimedia de manera eficiente.
 - Crear una interfaz amigable para la realización de las consultas de imágenes.
 
 
@@ -39,13 +34,13 @@ El archivo zip contiene lo siguiente:
 ...
 ...
 ```
-Es una carpeta lleno con carpetas con los nombres de los rostros principales. Adicionalmente, dentro de cada carpeta existen entre 1 a más imágenes de rostro referentes al nombre de la carpeta.
+Es una carpeta de carpetas con los nombres de los rostros principales. Adicionalmente, dentro de cada carpeta existen entre 1 a más imágenes de rostro referentes al nombre de la carpeta.
 
 Dataset extraído de [Face Data](http://vis-www.cs.umass.edu/lfw/).
 
 ## Librerías utilizadas
 
-Una de nuestras principales librerías a utilizar es el **Face recognition**. Sin esta librería no se puede extraer el vector característico de una imagen con rostros.
+Una de nuestras principales librerías a utilizar es el **Face recognition**. Usamos esta librería para extraer el vector característico de una imagen con rostros.
 Para realizar las operaciones con archivos multimedia, nos apoyamos de las siguientes librerías para realizar la búsqueda KNN.
 
 ### Heapq
@@ -71,53 +66,6 @@ aumentar la cantidad de dimensiones del árbol-R para tener los elementos simila
 
 Con esta limitación del árbol-R, es difícil decidir una dimensión apropiada, puesto que no hay un parámetro establecido que lo establezco más que ensayo y error. Como solución, se han implementado otros algoritmos o técnicas para evitar tener algun problema con la selección de la dimensión. En este proyecto se abordó el Faiss, un algoritmo que hace la búsqueda de vectores característicos semejantes en un tiempo menor al lineal.
 
-## Back-End
-
-Se utilizó el framework **FastAPI**, con el cual conectamos con el front-end a través de dos endpoints, los cuales devolverán el top K de nuestro indice creado y PostgreSQL. Para eso, se interpreta la query enviada por el usuario y se devuelve la data a través de un JSON.
-
-
-### Endpoints
-
-```python
-#1
-```
-- 111
-
-```python
-#2
-```
-- 222
-
-
-```python
-#3
-```
-
-- 333
-
-
-
-## Frontend
-
-Se utilizó React para la elaboración de la interfaz. Aquí, el usuario colocará la query y el top k documentos a obtener. Al presionar el botón de **enviar**, se realizará una conexión con las funciones del back-end (una para nuestro índice invertido y otra para Postgres), enviando como parámetros dichas variables. Seguidamente, la página esperará hasta que cada función devuelva un diccionario de los datos obtenidos, para después mostrarlos en formato de tabla, con el tiempo de consulta de cada uno.
-
-### Imágenes del frontend:
-Conexión a la PostgreSQL 
-
-![image](https://github.com/ByJuanDiego/db2-project-2/assets/68095284/31d63862-bbfc-453c-a949-16bd85b91b1b)
-
-Conexión al índice creado localmente
-
-![image](https://github.com/ByJuanDiego/db2-project-2/assets/68095284/14de7688-9747-4c1a-9089-e50390fa0d18)
-
-Interfaz al buscar una query
-
-![Resultado](https://github.com/ByJuanDiego/db2-project-2/assets/68095284/80be232e-59cb-49b6-9f71-52ec259d9983)
-
-Comparacion de tiempos al recuperar documentos
-
-![Tiempos](https://github.com/ByJuanDiego/db2-project-2/assets/79115974/84251111-d5b0-4868-b2d0-928993602a83)
-
 ## Experimentación
 
 ### Resultados
@@ -141,9 +89,6 @@ Se puede observar que la búsqueda secuencial siempre tarda más que utilizar al
 
 ## Conclusiones
 
-- La búsqueda secuencial puede resultar sencilla de implementar. Sin embargo, existen otras librerías como la de Faiss que resulta aún más sencilla de implementar y en la experimentación resulta más óptimo.
-- b
-- c
 
 
 ## Autores
@@ -152,7 +97,3 @@ Se puede observar que la búsqueda secuencial siempre tarda más que utilizar al
 |:---------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------:|:----:|
 |           ![Joaquín](https://avatars.githubusercontent.com/u/83974213)            |      ![Juan Diego Castro](https://avatars.githubusercontent.com/u/79115974?v=4)       |              ![José](https://avatars.githubusercontent.com/u/83974741)              | ![Juan Diego Laredo](https://avatars.githubusercontent.com/u/68095284?v=4) |                                             
 | <a href="https://github.com/jjordanoc" target="_blank">`github.com/jjordanoc`</a> | <a href="https://github.com/ByJuanDiego" target="_blank">`github.com/ByJuanDiego`</a> | <a href="https://github.com/JoseChachi" target="_blank">`github.com/JoseChachi`</a> | <a href="https://github.com/DarKNeSsJuaN25" target="_blank">`github.com/DarkNeSsJuaN25`</a>|
-
-## Referencias bibliográficas
-
-- [1] No
