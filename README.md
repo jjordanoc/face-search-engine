@@ -111,7 +111,11 @@ En el gráfico puede observar una mejora cuando se utiliza el RTree y no hay muc
 
 ## Conclusiones
 
+- De forma empirica se determino uso del RTree en algunos casos puede resultar en un rendimiento incluso peor que una busqueda sequencial, por lo que es conveniente saber en que casos utilizarlo para obtener buenos resultados.
+  
+-  Se concluye que el ```IndexLSH``` es la mejor técnica utilizada en este proyecto por sus resultados indiscutiblemente mejores que las demas.
 
+-  Se pudo implementar una aplicacion funcional (de forma academica) que compara 3 metodos de busqueda para comparar su eficiencia, midiendo sus tiempos de ejecucion, y su eficacia, visualizando los resultados obtenidos por cada uno de ellos.
 
 ## Autores
 
