@@ -4,3 +4,50 @@
   align-items: center;
 
 }
+
+h3{
+  font-size: 30px;
+}
+
+button{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 30px;
+  width: 100px;
+  background-color: antiquewhite;
+}
+img{
+  max-height: 250px;
+}
+
+input{
+  height: 30px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-right: 2rem;
+}
+
+table{
+    border-collapse: collapse;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-top: 3rem;
+}
+th, td{
+    border: 2px solid black;
+    padding: 8px;
+}
+.input-div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.resultados{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.resultados > *{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
