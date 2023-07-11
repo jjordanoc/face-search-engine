@@ -60,14 +60,22 @@ La búsqueda KNN en el RTree se realiza utilizando una búsqueda con un rango in
 Por otro lado, la búsqueda por rango no se implementa como un método para el índice en la librería `rtree` de Python, pero se puede simular utilizando la búsqueda por intersección con el MBR {(x-r, y-r),(x+r,y+r)} donde (x,y) es el vector de consulta y luego filtrando aquellos puntos cuya distancia es menor al radio. Esta lógica se puede generalizar a N dimensiones sin ningún problema. 
 
 ### Faiss (LSH)
-- Algoritmo de búsqueda de los vectores característicos más semejantes.
-- Utiliza una familia de funciones hash. Intenta provocar colisiones en un mismo bucket.
-- Almacena buckets no vacíos. Esto para hacer la búsqueda de los vectores en una complejidad menor a la lineal.
+
+Faiss (Facebook AI Similarity Search) implementa la clase ```IndexLSH```, que permite trabajar de forma eficiente la similitud entre vectores característicos de mayor dimensión. Para ello, el objetivo de esta técnica es asignar vectores característicos que tengan similitudes a los mismos buckets. Mientras que en una tabla hash tradicional el objetivo era minimizar las colisiones, en esta técnica se busca maximizar las colisiones siempre y cuando esta tenga sentido. LSH es usado tanto como para resolver el problema del vecino más cercano como para agrupación de datos. El algoritmo consta de las siguientes partes:
+
+- Dividir los vectores en subpartes (bandas) y en lugar de procesar todo el vector en la funcion hash lo que se hace es pasar cada una de las bandas en la funcion hash.
+- Si se tienen b subvectores, pueden usarse b funciones hash o una sola para elegir el bucket donde se asignara el subvector.
+- La version mas flexible de este algoritmo indica que si existe una colision entre cualquier par de subvectores se consideran los vectores completos como posibles candidatos.
 
 ![image](https://github.com/ByJuanDiego/db2-project-3/assets/83974741/2835ae34-c6c8-435e-b447-933368f8f6b6)
 
 ![image](https://github.com/ByJuanDiego/db2-project-3/assets/83974741/2a3b1fb5-6bc8-477b-8f39-c02f12bd639b)
 
+Desventajas:
+
+- Pueden existir falsos positivos, puesto que el algoritmo considera como candidato un vector que tenga una subparte que colisione con la del input, pero puede que la mayor parte del vector en realidad no sea similar.
+- Requieren muchas funciones hash para lograr resultados aceptables, lo que se traduce en memoria adicional.
+- La función hash no está adaptada a los datos de entrada (es independiente de los datos). Esto lo vuelve mas sencillo y rapido, pero puede conducir a resultados de elección no tan óptimos en la práctica. En general los resultados son bastante buenos, pero puede darse el caso de que existan mejores.
 
 ## Análisis de la maldición de la dimensionalidad y mitigación
 
