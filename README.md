@@ -41,20 +41,14 @@ Es una carpeta de carpetas con los nombres de los rostros principales. Adicional
 
 Dataset extraído de [Face Data](http://vis-www.cs.umass.edu/lfw/).
 
-## Librerías utilizadas
+## Técnicas de indexación utilizadas
 
-Una de nuestras principales librerías a utilizar es el **Face recognition**. Usamos esta librería para extraer el vector característico de una imagen con rostros.
-Para realizar las operaciones con archivos multimedia, nos apoyamos de las siguientes librerías para realizar la búsqueda KNN.
-
-### Heapq
-- Estructura unidimensional.
-- Los nodos del heap son las K imágenes más cercanas a la query.
-- Se apoya de un heap para optimizar espacialmente la búsqueda secuencial KNN.
+### Sin indexación
+- Se ...
 
 ### RTree
 - Estructura multidimensional.
-- El RTree genera espacios de acceso multidimensional en donde almacena elementos semejantes a estos.
-- En la búsqueda, se aplica un filtrado con respecto a estos espacios en las dimensiones del árbol.
+- La búsqueda KNN consiste en usar la estructura para filtrar aquellos elementos
 
 ### Faiss (LSH)
 - Algoritmo de búsqueda de los vectores característicos más semejantes.
