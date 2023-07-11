@@ -94,7 +94,7 @@ Con esta limitación del árbol-R, es difícil decidir una dimensión apropiada,
 
 ### Análisis y discusión
 
-Se puede observar que la búsqueda secuencial siempre tarda más que utilizar alguna de las técnicas de indexación propuestas. Asimismo, se observa que a partir de 6400 datos en adelante, el índice de alta dimensionalidad supera al RTree, lo cuál es una manifestación de la maldición de la dimensionalidad.
+En el gráfico puede observar una mejora cuando se utiliza el RTree y no hay muchos datos; sin embargo, tomando más de 6400 datos, el rendimiento del RTree es peor que el de la consulta secuencial. También vemos que el índice que utiliza LSH supera a ambas técnicas de manera significativa. Esto tiene sentido, pues es una técnica especializada en manejar datos de alta dimensionalidad, como los vectores característicos de imágenes con los que se trabajó en este proyecto de dimensión 128.
 
 ## Conclusiones
 
