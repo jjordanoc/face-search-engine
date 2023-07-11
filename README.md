@@ -47,8 +47,12 @@ Dataset extraído de [Face Data](http://vis-www.cs.umass.edu/lfw/).
 - Se ...
 
 ### RTree
-- Estructura multidimensional.
-- La búsqueda KNN consiste en usar la estructura para filtrar aquellos elementos
+
+La búsqueda KNN en el RTree se realiza utilizando una búsqueda con un rango inicialmente infinito y luego reduciendo este radio a la máxima distancia de los KNN según se evalúan los MBR hoja.
+
+![image](https://github.com/ByJuanDiego/db2-project-3/assets/83974213/3d8ebbed-ec33-46d5-a7dd-97b34148e7d5)
+
+Por otro lado, la búsqueda por rango no se implementa como un método para el índice en la librería `rtree` de Python, pero se puede simular utilizando la búsqueda por intersección con el MBR {(x-r, y-r),(x+r,y+r)} donde (x,y) es el vector de consulta y luego filtrando aquellos puntos cuya distancia es menor al radio. Esta lógica se puede generalizar a N dimensiones sin ningún problema. 
 
 ### Faiss (LSH)
 - Algoritmo de búsqueda de los vectores característicos más semejantes.
