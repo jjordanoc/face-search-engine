@@ -22,6 +22,9 @@ Aplicar los algoritmos de búsqueda y recuperación de la información para arch
 
 ## Descripción del dominio de datos
 El dataset utilizado son rostros de personas famosas de cualquier profesión. Nótese que una imagen no necesariamente contiene el rostro de solo 1 persona.
+
+![image](https://github.com/ByJuanDiego/db2-project-3/assets/83974741/2687074e-0723-47b9-b174-81747e8166f0)
+
 El archivo zip contiene lo siguiente:
 
 ```markdown
@@ -58,13 +61,20 @@ Para realizar las operaciones con archivos multimedia, nos apoyamos de las sigui
 - Utiliza una familia de funciones hash. Intenta provocar colisiones en un mismo bucket.
 - Almacena buckets no vacíos. Esto para hacer la búsqueda de los vectores en una complejidad menor a la lineal.
 
+![image](https://github.com/ByJuanDiego/db2-project-3/assets/83974741/2835ae34-c6c8-435e-b447-933368f8f6b6)
+
+![image](https://github.com/ByJuanDiego/db2-project-3/assets/83974741/2a3b1fb5-6bc8-477b-8f39-c02f12bd639b)
+
+
 ## Análisis de la maldición de la dimensionalidad y mitigación
 
 El árbol-R es una estructura dimensional que agrupa sus elementos en distintos locaciones geográficas. Estas locaciones son fijadas de acuerdo a la dimensión indicada en el árbol. Es por ello que es recomendable
 aumentar la cantidad de dimensiones del árbol-R para tener los elementos similares agrupados disjuntos. Sin embargo, existe una situación en que si la dimensión es un número demasiado grande, existen variadas locaciones en donde los elementos se agrupan. Si los elementos agrupados están dispersos, en el algoritmo de búsqueda de los elementos KNN no se aplicará un filtro prudente y esto ocasiona que nuestra búsqueda KNN en un
 árbol-R sea similar en complejidad computacional a una búsqueda lineal. En otras palabras, hay que ir aumentando la dimensión del RTree para agilizar la búsqueda hasta un tamaño en donde la dimensión no sea excesiva y sea perjudicial.
 
-Con esta limitación del árbol-R, es difícil decidir una dimensión apropiada, puesto que no hay un parámetro establecido que lo establezco más que ensayo y error. Como solución, se han implementado otros algoritmos o técnicas para evitar tener algun problema con la selección de la dimensión. En este proyecto se abordó el Faiss, un algoritmo que hace la búsqueda de vectores característicos semejantes en un tiempo menor al lineal.
+Con esta limitación del árbol-R, es difícil decidir una dimensión apropiada, puesto que no hay un parámetro establecido que lo establezco más que ensayo y error. Como solución, se han implementado otros algoritmos o técnicas para evitar tener algun problema con la selección de la dimensión. En este proyecto se abordó el Faiss LSH, un algoritmo que hace la búsqueda de vectores característicos semejantes en un tiempo menor al lineal.
+
+![image](https://github.com/ByJuanDiego/db2-project-3/assets/83974741/6d9b087c-5801-44d7-aec2-ad049a8890bb)
 
 ## Experimentación
 
