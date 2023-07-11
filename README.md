@@ -86,7 +86,7 @@ Supongamos una query de un tamaño fijado. Si hacemos la búsqueda KNN en una di
 
 ![image](https://github.com/ByJuanDiego/db2-project-3/assets/83974741/390aa146-a97f-4b30-b59d-d5d8b8a2ffe8)
 
-Fuente: ![Fuente](https://medium.com/@nicolasarrioja/la-maldici%C3%B3n-de-la-dimensionalidad-f7a6248cf9a)
+Fuente: https://medium.com/@nicolasarrioja/la-maldici%C3%B3n-de-la-dimensionalidad-f7a6248cf9a
 
 ## Experimentación
 
