@@ -80,12 +80,11 @@ Desventajas:
 ## Análisis de la maldición de la dimensionalidad y mitigación
 
 El árbol-R es una estructura dimensional que agrupa sus elementos en distintos locaciones geográficas. Estas locaciones son fijadas de acuerdo a la dimensión indicada en el árbol. Es por ello que es recomendable
-aumentar la cantidad de dimensiones del árbol-R para tener los elementos similares agrupados disjuntos. Sin embargo, existe una situación en que si la dimensión es un número demasiado grande, existen variadas locaciones en donde los elementos se agrupan. Si los elementos agrupados están dispersos, en el algoritmo de búsqueda de los elementos KNN no se aplicará un filtro prudente y esto ocasiona que nuestra búsqueda KNN en un
-árbol-R sea similar en complejidad computacional a una búsqueda lineal. En otras palabras, hay que ir aumentando la dimensión del RTree para agilizar la búsqueda hasta un tamaño en donde la dimensión no sea excesiva y sea perjudicial.
+aumentar la cantidad de dimensiones del árbol-R para tener los elementos similares agrupados disjuntos. Sin embargo, existe una situación en que si la dimensión es un número demasiado grande.
 
-Con esta limitación del árbol-R, es difícil decidir una dimensión apropiada, puesto que no hay un parámetro establecido que lo establezco más que ensayo y error. Como solución, se han implementado otros algoritmos o técnicas para evitar tener algun problema con la selección de la dimensión. En este proyecto se abordó el Faiss LSH, un algoritmo que hace la búsqueda de vectores característicos semejantes en un tiempo menor al lineal.
+Supongamos una query de un tamaño fijado. Si hacemos la búsqueda KNN en una dimensión, la distancia nos retorna un resultado. Si hacemos la misma consulta en un árbol de 2 dimensiones, la distancia se ve afectada y aumenta. Lo mismo sucederá si se sigue aumentando las dimensiones. En otras palabras, el cálculo de distancias depende de las dimensiones.
 
-![image](https://github.com/ByJuanDiego/db2-project-3/assets/83974741/e03f9aba-9e23-48fd-8ebd-d2af200401d8)
+![image](https://github.com/ByJuanDiego/db2-project-3/assets/83974741/390aa146-a97f-4b30-b59d-d5d8b8a2ffe8)
 
 ## Experimentación
 
