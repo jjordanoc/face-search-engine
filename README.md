@@ -44,7 +44,12 @@ Dataset extraído de [Face Data](http://vis-www.cs.umass.edu/lfw/).
 ## Técnicas de indexación utilizadas
 
 ### Sin indexación
-- Se ...
+
+La búsqueda secuencial, también llamada lineal, es la técnica utilizada al no implementar ningun tipo de indexación. Esta técnica es muy sencilla de implementar; sin embargo, estamos ejerciendo fuerza bruta al calcular la similitud (distancia) entre los datos lo cual lleva a una alta complejidad computacional. Se desarrolló la búsqueda lineal para que se pueda utilizar la búsqueda KNN y la búsqueda por rango basándose en los siguientes esquemas.
+
+![image](https://github.com/ByJuanDiego/db2-project-3/assets/83974741/415bded7-b068-4705-bea1-5cfff171a3d5)
+
+En ambas implementaciones calculamos la distancia de la query hacia todos los datos. En la búsqueda por rango se añade al resultado solo si la distancia calculada es menor a lo indicado. Mientras que para la búsqueda secuencial KNN, se utilizó una cola de prioridad y se añade al resultado solo si se encuentra una menor distancia calculada con respecto a las distancias dentro del heap.
 
 ### RTree
 
