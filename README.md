@@ -74,7 +74,7 @@ aumentar la cantidad de dimensiones del árbol-R para tener los elementos simila
 
 Con esta limitación del árbol-R, es difícil decidir una dimensión apropiada, puesto que no hay un parámetro establecido que lo establezco más que ensayo y error. Como solución, se han implementado otros algoritmos o técnicas para evitar tener algun problema con la selección de la dimensión. En este proyecto se abordó el Faiss LSH, un algoritmo que hace la búsqueda de vectores característicos semejantes en un tiempo menor al lineal.
 
-![image](https://github.com/ByJuanDiego/db2-project-3/assets/83974741/6d9b087c-5801-44d7-aec2-ad049a8890bb)
+![image](https://github.com/ByJuanDiego/db2-project-3/assets/83974741/e03f9aba-9e23-48fd-8ebd-d2af200401d8)
 
 ## Experimentación
 
