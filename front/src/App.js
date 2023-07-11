@@ -1,6 +1,8 @@
 import './App.css';
 import { useRef, useState } from 'react';
 import {v4 as uuidv4} from 'uuid';
+import normalize from 'normalize-path';
+
 function App() {
   const [image, setimage] = useState(null);
   const fileInput = useRef(null);
@@ -23,7 +25,7 @@ function App() {
       <tbody>
         {datos.map((tupla) => (
           <tr key={uuidv4()}>
-            <td>{<img src={require(`./lfw/${tupla[0].replace('./lfw/','')}`)} alt={uuidv4()} key={uuidv4()} id={uuidv4()}/>}</td>
+            <td>{<img src={require("./" + normalize(tupla[0]))} alt={uuidv4()} key={uuidv4()} id={uuidv4()}/>}</td>
             <td>{tupla[1]}</td>
           </tr>
         ))}
@@ -37,12 +39,13 @@ function App() {
     const k = inputRef.current.value || '1';
 
     const formData = new FormData();
-    formData.append('image', file);
+    formData.append('file', file);
     formData.append('k',k);
     setimage(URL.createObjectURL(file));
-    const start_time = Date.now();
+
     try {
-      const response = await fetch('http://localhost:8000/secuencial', {
+      const start_time = Date.now();
+      const response = await fetch('http://localhost:8000/sequential', {
         method: 'POST',
         body: formData,
       });
@@ -50,8 +53,9 @@ function App() {
       if (response.ok) {
         const end_secuential_time = Date.now();
         settime_secuential(end_secuential_time-start_time);
-        const {responseData : data} = await response.json();
-        const tabla_secuencial = data.map((lista) => (
+        const {result: data} = await response.json();
+        const arr = JSON.parse(data);
+        const tabla_secuencial = arr.map((lista) => (
           <Tabla key={uuidv4()} datos={lista} />
         ));
         setTabla_secuencial(tabla_secuencial);       
@@ -63,7 +67,8 @@ function App() {
     }
 
     try {
-      const response = await fetch('http://localhost:8000/secuencial', {
+      const start_time = Date.now();
+      const response = await fetch('http://localhost:8000/rtree', {
         method: 'POST',
         body: formData,
       });
@@ -71,8 +76,9 @@ function App() {
       if (response.ok) {
         const end_rtree_time= Date.now();
         settime_rtree(end_rtree_time-start_time);
-        const {responseData : data} = await response.json();
-        const tabla_secuencial = data.map((lista) => (
+        const {result: data} = await response.json();
+        const arr = JSON.parse(data);
+        const tabla_secuencial = arr.map((lista) => (
           <Tabla key={uuidv4()} datos={lista} />
         ));
         setTabla_rtree(tabla_secuencial);       
@@ -84,7 +90,8 @@ function App() {
     }
 
     try {
-      const response = await fetch('http://localhost:8000/secuencial', {
+      const start_time = Date.now();
+      const response = await fetch('http://localhost:8000/highd', {
         method: 'POST',
         body: formData,
       });
@@ -92,8 +99,9 @@ function App() {
       if (response.ok) {
         const end_highD_time= Date.now();
         settime_highD(end_highD_time-start_time);
-        const {responseData : data} = await response.json();
-        const tabla_secuencial = data.map((lista) => (
+        const {result: data} = await response.json();
+        const arr = JSON.parse(data);
+        const tabla_secuencial = arr.map((lista) => (
           <Tabla key={uuidv4()} datos={lista} />
         ));
         setTabla_highD(tabla_secuencial);       
@@ -103,10 +111,6 @@ function App() {
     } catch (error) {
       console.log(error);
     }
-
-
-
-
 
   };
 

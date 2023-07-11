@@ -101,7 +101,7 @@ async def get_knn_highd(file: UploadFile = File(...), k: str = Form(...)) -> dic
     os.remove("highd_query.jpg")
 
     return {
-        'result': result,
+        'result': json.dumps(result),
         'response': 200
     }
 

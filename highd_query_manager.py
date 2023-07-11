@@ -2,6 +2,7 @@ from helpers import measure_execution_time
 import face_recognition
 from typing import List, Tuple
 import numpy as np
+import os
 import faiss
 
 
