@@ -80,9 +80,7 @@ Desventajas:
 ## Análisis de la maldición de la dimensionalidad y mitigación
 
 El árbol-R es una estructura dimensional que agrupa sus elementos en distintos locaciones geográficas. Estas locaciones son fijadas de acuerdo a la dimensión indicada en el árbol. Es por ello que es recomendable
-aumentar la cantidad de dimensiones del árbol-R para tener los elementos similares agrupados disjuntos. Sin embargo, existe una situación en que si la dimensión es un número demasiado grande.
-
-Supongamos una query de un tamaño fijado. Si hacemos la búsqueda KNN en una dimensión, la distancia nos retorna un resultado. Si hacemos la misma consulta en un árbol de 2 dimensiones, la distancia se ve afectada y aumenta. Lo mismo sucederá si se sigue aumentando las dimensiones. En otras palabras, el cálculo de distancias depende de las dimensiones.
+aumentar la cantidad de dimensiones del árbol-R para tener los elementos similares agrupados disjuntos. Sin embargo, existe una situación en que si la dimensión es un número demasiado grande. Supongamos una query de un tamaño fijado. Si hacemos la búsqueda KNN en una dimensión, la distancia nos retorna un resultado. Si hacemos la misma consulta en un árbol de 2 dimensiones, la distancia se ve afectada y aumenta. Lo mismo sucederá si se sigue aumentando las dimensiones. En otras palabras, el cálculo de distancias depende de las dimensiones.
 
 ![image](https://github.com/ByJuanDiego/db2-project-3/assets/83974741/390aa146-a97f-4b30-b59d-d5d8b8a2ffe8)
 
